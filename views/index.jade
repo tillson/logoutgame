@@ -1,0 +1,44 @@
+doctype html
+html(ng-app='pgSchedule' lang='en')
+  head
+    title Helpdesk Logout Game
+    link(rel='mask-icon' href='pg.svg' color='red')
+    meta(name='theme-color' content='red')
+    link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
+
+  body(ng-controller='mainController')
+    .container
+      h1 The PG Helpdesk&trade; Logout Game
+      hr
+      .add(ng-if='!submitted')
+        h2 Add
+        form.form-inline(ng-submit='addPerson()')
+          .form-group
+            input.form-control(placeholder='Your full name' type='text' name='name' ng-model='name')
+            | &nbsp;
+          .form-group
+            input.form-control(placeholder="Victim's full name" type='text' ng-model='victim')
+            | &nbsp;
+          button.btn.btn-success(type='submit') Submit
+        hr(style="margin-left:0px; width: 50%")
+      .leaderboard
+        h2 Leaderboard
+        table.table.table-bordered(style="width: 50%")
+          thead
+            tr
+              td Name
+              td Score
+          tbody
+            tr(ng-repeat='leader in leaderboard')
+              td.ng-cloak {{ leader.name }}
+              td.ng-cloak {{ leader.score }}
+      //- .shame
+      //-   h2 Loser-board
+      //-   table
+      hr
+      footer
+        p This is supposed to be fun.  Don't cheat.
+          br
+          | 2016 Tillson Galloway
+        script(src='/components/angular/angular.min.js')
+        script(src='/js/angularCore.js')
